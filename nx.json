@@ -1,24 +1,29 @@
 {
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "implicitDependencies": {
+    "go.mod": "*"
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
+    },
+    "lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore"
+      ]
+    }
+  },
   "tasksRunnerOptions": {
     "default": {
       "runner": "nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "Y2FkYmRhYTctYzRhNS00NzVkLTkwMjQtNjVjMGFiNjY3MzU0fHJlYWQtd3JpdGU="
       }
-    }
-  },
-  "targetDefaults": {
-    "build": {
-      "dependsOn": [
-        "^build"
-      ]
     }
   }
 }

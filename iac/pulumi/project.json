@@ -1,0 +1,40 @@
+{
+  "name": "pulumi",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "iac/pulumi/src",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["iac/pulumi/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx vitest --run",
+        "cwd": "libs/iac/pulumi"
+      }
+    },
+    "up": {
+      "executor": "@wanews/nx-pulumi:up",
+      "options": {
+        "buildTargets": []
+      }
+    },
+    "refresh": {
+      "executor": "@wanews/nx-pulumi:refresh",
+      "options": {
+        "buildTargets": []
+      }
+    },
+    "destroy": {
+      "executor": "@wanews/nx-pulumi:destroy",
+      "options": {
+        "buildTargets": []
+      }
+    }
+  },
+  "tags": []
+}
