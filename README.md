@@ -7,7 +7,7 @@ gcloud auth login
 gcloud config set project [your-gcp-project-id]
 ```
 
-#### Pulumi setup
+### Pulumi setup
 You should have created an account in pulumi at https://app.pulumi.com/
 #### Login to pulumi
 ```
@@ -25,3 +25,15 @@ pulumi config set gcp:project [your-gcp-project-id]
 pulumi config set gcp:region europe-central2
 ```
 
+#### Run pulumi locally to deploy the infrastructure
+```
+cd iac/pulumi
+pulumi up
+```
+
+#### Run pulumi locally to delete the infrastructure
+```
+pulumi destroy 
+```
+
+### Terraform setup 
