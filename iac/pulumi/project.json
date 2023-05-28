@@ -10,13 +10,6 @@
         "lintFilePatterns": ["iac/pulumi/**/*.ts"]
       }
     },
-    "test": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "npx vitest --run",
-        "cwd": "libs/iac/pulumi"
-      }
-    },
     "up": {
       "executor": "@wanews/nx-pulumi:up",
       "options": {
