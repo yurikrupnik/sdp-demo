@@ -9,5 +9,8 @@ func main() {
 		return c.SendString("Hello, World!")
 	})
 
-	app.Listen(":8080")
+	err := app.Listen(":8080")
+	if err != nil {
+		return
+	}
 }
