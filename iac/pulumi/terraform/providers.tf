@@ -1,7 +1,7 @@
 provider "google" {
   credentials = file("path/to/your/service-account-key.json")
-  project     = "sdp-demo-388112"
-  region      = "europe-central2"
+  project     = var.project_id
+  region      = var.location
 }
 
 terraform {
