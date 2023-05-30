@@ -2,6 +2,6 @@
 output "workloadName"{
   value=google_iam_workload_identity_pool.example-pool-terraform.name
 }
-output "workloadSAEmail "{
-  value=google_iam_workload_identity_pool.example-pool-terraform.
-}
+# output "workloadSAEmail "{
+#   # value=google_iam_workload_identity_pool.example-pool-terraform.
+# }

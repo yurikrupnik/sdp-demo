@@ -42,11 +42,11 @@ module "artifactRegistery" {
 
   source = "./modules/artifactory"
 
-  projectId     = var.project_id
-  location      = var.location
-  repositoryId  = var.repository_id
-  description   = "example docker repository"
-  format        = "DOCKER"
+  project_id     = var.project_id
+  location       = var.location
+  repository_id  = var.repository_id
+  description    = "example docker repository"
+  format         = "DOCKER"
 
 }
 

@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"artifactRegistery","Source":"./modules/artifactory","Dir":"modules/artifactory"},{"Key":"workloadidentity","Source":"./modules/workloadidentity","Dir":"modules/workloadidentity"}]}
