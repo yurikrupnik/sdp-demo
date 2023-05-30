@@ -1,6 +1,10 @@
 variable "project_id" {
   type = string  
-  default = "oded-rafi-sandbox"
+  default = "sdp-demo-388112"
+}
+variable "repository_id" {
+  type = string  
+  default = "docker-registry"
 }
 variable "location" {
   type = string  
