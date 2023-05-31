@@ -18,7 +18,7 @@ resource "google_project_iam_binding" "github-sa-artifact-registry-writer" {
 
 
 
-resource "google_iam_workload_identity_pool" "example-pool-terraform" {
+resource "google_iam_workload_identity_pool" "oded-pool-terraform" {
   project                   = var.project_id 
   workload_identity_pool_id = var.workload_identity_pool_id
   display_name              = var.display_name
@@ -28,7 +28,7 @@ resource "google_iam_workload_identity_pool" "example-pool-terraform" {
 }
 
 resource "google_iam_workload_identity_pool_provider" "example" {
-  workload_identity_pool_id          = google_iam_workload_identity_pool.example-pool-terraform.workload_identity_pool_id
+  workload_identity_pool_id          = google_iam_workload_identity_pool.oded-pool-terraform.workload_identity_pool_id
   workload_identity_pool_provider_id = var.workload_identity_pool_provider_id
   display_name                       = var.provider_display_name
   description                        = var.workload_identity_pool__provider_description
@@ -43,11 +43,15 @@ resource "google_iam_workload_identity_pool_provider" "example" {
 }
 
 
+locals {
+  members = [
+    for repo in var.repo_names : "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.oded-pool-terraform.name}/attribute.repository/:${repo}"
+  ]
+}
+
 resource "google_service_account_iam_binding" "admin-account-iam" {
   service_account_id = google_service_account.container-builder-sa.id
   role               = "roles/iam.workloadIdentityUser"
 
-  members = [
-    "principalSet://iam.googleapis.com/projects/260334471419/locations/global/workloadIdentityPools/github-pool-pu/attribute.repository/yurikrupnik/sdp-demo",
-  ]
+  members            = local.members
 }

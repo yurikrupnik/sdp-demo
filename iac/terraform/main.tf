@@ -1,16 +1,9 @@
 
-# resource "random_id" "bucket_prefix" {
-#   byte_length = 8
-# }
-# resource "google_storage_bucket" "tfstate" {
-#   name          = "${random_id.bucket_prefix.hex}-bucket-tfstate"
-#   force_destroy = false
-#   location      = "EU"
-#   storage_class = "STANDARD"
-#   versioning {
-#     enabled = true
-#   }
-# }
+#  Activate artifactregistry.googleapis.com api
+resource "google_project_service" "artifactregistry" {
+  project = var.project_id
+  service  = "artifactregistry.googleapis.com"
+}
 module "artifactRegistery" {
 
   source = "./modules/artifactory"
@@ -22,8 +15,11 @@ module "artifactRegistery" {
   format         = "DOCKER"
 
 }
-
-
+#  activate iamcredentials.googleapis.com api
+resource "google_project_service" "iam_credentials" {
+  project = var.project_id
+  service   = "iamcredentials.googleapis.com"
+}
 module "workloadidentity" {
 
   source = "./modules/workloadidentity"
@@ -38,6 +34,7 @@ module "workloadidentity" {
   workload_identity_pool__provider_description  = "OIDC identity pool provider for Github"
   service_account_id                            = "oded-container-builder-sa"
   service_account_display_name                  = "oded-Container builder"
+  repo_names                                    = var.repo_names
 }
 
 

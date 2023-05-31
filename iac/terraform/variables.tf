@@ -14,3 +14,8 @@ variable "enable" {
   description = "Actually enable the APIs listed"
   default     = true
 }
+
+variable "repo_names" {
+  type    = list(string)
+  default = ["yurikrupnik/sdp-demo"]
+}

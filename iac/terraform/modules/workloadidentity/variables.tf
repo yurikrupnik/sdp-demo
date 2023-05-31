@@ -39,9 +39,9 @@ variable "workload_identity_pool__provider_description" {
   type = string  
   default = ""
 }
-# variable "repo" {
-#   type    = list(string)
-#   default = ["yurikrupnik/sdp-demo"]
-# }
+variable "repo_names" {
+  type    = list(string)
+  default = []
+}
 
 
