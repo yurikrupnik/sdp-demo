@@ -4,7 +4,7 @@ variable "project_id" {
 }
 variable "repository_id" {
   type = string  
-  default = "docker-registry"
+  default = "oded-container-repository"
 }
 variable "location" {
   type = string  

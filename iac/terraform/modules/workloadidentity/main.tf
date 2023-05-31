@@ -1,3 +1,22 @@
+resource "google_service_account" "container-builder-sa" {
+  account_id    = var.service_account_id
+  display_name  = var.service_account_display_name
+  description   = "Github actions service account to create containers"
+
+}
+
+resource "google_project_iam_binding" "github-sa-artifact-registry-writer" {
+  project = var.project_id
+  role    = "roles/artifactregistry.writer"
+
+  members = [
+    "serviceAccount:${google_service_account.container-builder-sa.email}",
+  ]
+
+}
+
+
+
 
 resource "google_iam_workload_identity_pool" "example-pool-terraform" {
   project                   = var.project_id 
@@ -21,4 +40,14 @@ resource "google_iam_workload_identity_pool_provider" "example" {
   oidc {
     issuer_uri        = "https://token.actions.githubusercontent.com"
   }
+}
+
+
+resource "google_service_account_iam_binding" "admin-account-iam" {
+  service_account_id = google_service_account.container-builder-sa.id
+  role               = "roles/iam.workloadIdentityUser"
+
+  members = [
+    "principalSet://iam.googleapis.com/projects/260334471419/locations/global/workloadIdentityPools/github-pool-pu/attribute.repository/yurikrupnik/sdp-demo",
+  ]
 }

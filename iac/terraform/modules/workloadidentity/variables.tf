@@ -10,6 +10,14 @@ variable "display_name" {
   type = string  
   default = ""
 }
+variable "service_account_id" {
+  type = string  
+  default = ""
+}
+variable "service_account_display_name" {
+  type = string  
+  default = ""
+}
 variable "provider_display_name" {
   type = string  
   default = ""
@@ -31,8 +39,9 @@ variable "workload_identity_pool__provider_description" {
   type = string  
   default = ""
 }
-
-
-
+# variable "repo" {
+#   type    = list(string)
+#   default = ["yurikrupnik/sdp-demo"]
+# }
 
 
