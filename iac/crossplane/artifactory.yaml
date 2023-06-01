@@ -1,0 +1,30 @@
+apiVersion: cloudplatform.gcp.upbound.io/v1beta1
+kind: ProjectService
+metadata:
+  annotations:
+    meta.upbound.io/example-id: cloudplatform/v1beta1/artifactregistry
+  labels:
+    testing.upbound.io/example-name: artifactregistry
+  name: artifactregistry
+spec:
+  forProvider:
+    disableDependentServices: false
+#    disableOnDestroy: false
+    service: artifactregistry.googleapis.com
+    project: sdp-demo-388112
+---
+apiVersion: artifact.gcp.upbound.io/v1beta1
+kind: RegistryRepository
+metadata:
+#  annotations:
+#    meta.upbound.io/example-id: artifact/v1beta1/registryrepository
+  labels:
+    testing.upbound.io/example-name: container-repo
+  name: container-repo
+spec:
+  forProvider:
+    description: example docker repository by crossplane
+    format: DOCKER
+    location: europe-central2
+    labels:
+      iac: crossplane

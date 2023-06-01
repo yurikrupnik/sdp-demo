@@ -1,0 +1,23 @@
+# https://taskfile.dev
+
+version: '3'
+
+includes:
+  crossplane: ./iac/crossplane
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  crossplane-start:
+    cmds:
+      - minikube start
+      - minikube addons enable gcp-auth
+      - vela install -y
+      - vela addon enable velaux
+      - task: crossplane:install
+      - task: crossplane:create-gcp-provider
+      - task: crossplane:create-resources
+  crossplane-delete:
+    cmds:
+      - minikube delete
