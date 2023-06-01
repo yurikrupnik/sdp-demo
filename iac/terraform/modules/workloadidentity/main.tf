@@ -14,10 +14,6 @@ resource "google_project_iam_binding" "github-sa-artifact-registry-writer" {
   ]
 
 }
-
-
-
-
 resource "google_iam_workload_identity_pool" "oded-pool-terraform" {
   project                   = var.project_id 
   workload_identity_pool_id = var.workload_identity_pool_id
