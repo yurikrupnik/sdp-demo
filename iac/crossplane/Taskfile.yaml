@@ -30,37 +30,9 @@ tasks:
     dir: iac/crossplane
     cmds:
       - kubectl apply -f artifactory.yaml
+      - kubectl apply -f workloadIdentity.yaml
   info:
     cmds:
       - kubectl get RegistryRepository
       - kubectl delete RegistryRepository --selector testing.upbound.io/example-name=container-repo
 
-  get-buckets:
-    cmds:
-      - kubectl get bucket
-  delete-schemas:
-    cmds:
-      - kubectl delete schema --selector testing.upbound.io/example-name=trigger
-  delete-bucket:
-    cmds:
-      - kubectl delete bucket --selector docs.crossplane.io/example=provider-gcp
-  delete-schema:
-    cmds:
-      - kubectl delete schema --selector testing.upbound.io/example-name=schema
-  get-xrd:
-    cmds:
-      - kubectl get TopicBucket -n test
-      - kubectl get topicbucket -A
-      - kubectl get xtopicbucket
-      - kubectl get xrd
-      - kubectl get composite
-      - kubectl get composition
-      - kubectl get xdatasetwithbucket
-  delete-composite:
-    cmds:
-      - kubectl delete XTopicBucket my-second-composite-resource
-      - kubectl delete xtopicbucket my-composite-resource
-  delete-claim:
-    cmds:
-      - kubectl delete topicbucket claimed-topic-with-bucket -n test
-      - kubectl delete topicbucket second-claimed-topic-with-bucket -n test2
