@@ -1,0 +1,126 @@
+apiVersion: cloudplatform.gcp.upbound.io/v1beta1
+kind: ProjectService
+metadata:
+  annotations:
+    meta.upbound.io/example-id: cloudplatform/v1beta1/artifactregistry
+  labels:
+    testing.upbound.io/example-name: iamcredentials
+  name: iamcredentials
+spec:
+  forProvider:
+    disableDependentServices: false
+    service: iamcredentials.googleapis.com
+    project: sdp-demo-388112
+---
+apiVersion: cloudplatform.gcp.upbound.io/v1beta1
+kind: ServiceAccount
+metadata:
+  annotations:
+    meta.upbound.io/example-id: cloudplatform/v1beta1/artifactory
+  labels:
+    testing.upbound.io/example-name: container-builder
+  name: container-builder
+spec:
+  forProvider:
+    displayName: Container builder
+    description: Github actions service account to create containers
+---
+#apiVersion: core.oam.dev/v1alpha2
+#kind: Component
+#metadata:
+#  name: output
+#  labels:
+#    app.oam.dev/name: output
+#    app.oam.dev/version: "v1alpha2"
+#    app.oam.dev/component-type: "core.oam.dev/worker"
+#spec:
+#  workload:
+#    apiVersion: upbound.io/v1alpha1
+#    kind: Configuration
+#    metadata:
+#      name: output
+#      labels:
+#        app: output
+#    spec:
+#      writeConnectionSecretToRef:
+#        name: output
+#---
+#apiVersion: core.oam.dev/v1alpha2
+#kind: Trait
+#metadata:
+#  name: output
+#  labels:
+#    app.oam.dev/name: output
+#    app.oam.dev/version: "v1alpha2"
+#    app.oam.dev/component-type: "core.oam.dev/worker"
+#spec:
+#  appliesToWorkloads:
+#    - output
+#  extension:
+#    configMap:
+#      name: output
+#---
+apiVersion: cloudplatform.gcp.upbound.io/v1beta1
+kind: ProjectIAMMember
+metadata:
+  annotations:
+    meta.upbound.io/example-id: logging/v1beta1/container-builder
+  labels:
+    testing.upbound.io/example-name: container-builder-role
+  name: container-builder-role
+spec:
+  forProvider:
+    member: serviceAccount:container-builder@sdp-demo-388112.iam.gserviceaccount.com
+    project: sdp-demo-388112
+    role: "roles/artifactregistry.writer"
+---
+apiVersion: iam.gcp.upbound.io/v1beta1
+kind: WorkloadIdentityPool
+metadata:
+  annotations:
+    meta.upbound.io/example-id: iam/v1beta1/workloadidentitypool
+    upjet.upbound.io/manual-ntervention: Needs permissions for Pool creation
+  labels:
+    testing.upbound.io/example-name: github-pool
+  name: github-pool-cr2
+spec:
+  forProvider:
+    description: 'Github Pool Crossplane'
+    displayName: 'Github Pool Crossplane'
+---
+apiVersion: iam.gcp.upbound.io/v1beta1
+kind: WorkloadIdentityPoolProvider
+metadata:
+  annotations:
+    meta.upbound.io/example-id: iam/v1beta1/workloadidentitypoolprovider
+  labels:
+    testing.upbound.io/example-name: identity-pool-provider
+  name: identity-pool-provider4
+spec:
+  forProvider:
+    project: sdp-demo-388112
+    displayName: "github-provider1"
+    description: "Github Provider1"
+    attributeMapping:
+      'google.subject': 'assertion.sub'
+      'attribute.actor': 'assertion.actor'
+      'attribute.repository': 'assertion.repository'
+    oidc:
+     - issuerUri: 'https://token.actions.githubusercontent.com'
+    workloadIdentityPoolId: github-pool-cr2
+---
+apiVersion: cloudplatform.gcp.upbound.io/v1beta1
+kind: ServiceAccountIAMMember
+metadata:
+  annotations:
+    meta.upbound.io/example-id: cloudplatform/v1beta1/serviceaccountiammember
+  labels:
+    testing.upbound.io/example-name: service-account-iam-member
+  name: service-account-iam-member1
+spec:
+  forProvider:
+    member: 'principalSet://iam.googleapis.com/projects/260334471419/locations/global/workloadIdentityPools/github-pool-cr2/attribute.repository/yurikrupnik/sdp-demo'
+    role: roles/iam.workloadIdentityUser
+    serviceAccountIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: container-builder
