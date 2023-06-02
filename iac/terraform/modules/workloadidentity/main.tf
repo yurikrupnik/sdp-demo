@@ -36,7 +36,7 @@ resource "google_iam_workload_identity_pool_provider" "example" {
 
 locals {
   members = [
-    for repo in var.repo_names : "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.oded-pool-terraform.name}/attribute.repository/:${repo}"
+    for repo in var.repo_names : "principalSet://iam.googleapis.com/${google_iam_workload_identity_pool.oded-pool-terraform.name}/attribute.repository/${repo}"
   ]
 }
 
