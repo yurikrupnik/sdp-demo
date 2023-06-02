@@ -1,3 +1,5 @@
 config:
   gcp:project: sdp-demo-388112
   gcp:region: europe-central2
+  pulumi:repos:
+    - yurikrupnik/sdp-demo
