@@ -4,8 +4,14 @@ import { ArtifactoryResource } from './artifactory';
 import { WorkloadIdentityResource } from './workloadIdentity';
 
 const gcpConfig = new pulumi.Config('gcp');
+const pulumiConfig = new pulumi.Config('pulumi');
 const region = gcpConfig.get('region');
 const project = gcpConfig.get('project');
+const repos = pulumiConfig.requireObject('repos');
+// const repos = pulumiConfig.get('repos');
+
+console.log('repos', repos);
+console.log('repos', typeof repos);
 
 const artifactRegistry = new gcp.projects.Service(
   'artifactregistry.googleapis.com',
@@ -47,6 +53,7 @@ const iamcredentials = new gcp.projects.Service(
 const workloadIdentity = new WorkloadIdentityResource(
   'WorkloadIdentityResource',
   {
+    // repos: repos as [],
     repos: ['yurikrupnik/sdp-demo'],
     project,
   },
