@@ -217,9 +217,8 @@ jobs:
         uses: 'google-github-actions/auth@v1'
         with:
           # change here to your workload_identity_provider and service_account
-#          workload_identity_provider: 'projects/260334471419/locations/global/workloadIdentityPools/github-pool-pul/providers/github-provider'
-          workload_identity_provider: 'projects/260334471419/locations/global/workloadIdentityPools/github-pool-terraform/providers/github-provider-terraform'
-          service_account: 'container-pusher@sdp-demo-388112.iam.gserviceaccount.com'
+          workload_identity_provider: 'projects/260334471419/locations/global/workloadIdentityPools/github-pool-1/providers/github-provider'
+          service_account: 'container-builder-sa@sdp-demo-388112.iam.gserviceaccount.com'
       - run: |-
           gcloud --quiet auth configure-docker europe-central2-docker.pkg.dev
 # End of gcp containers
@@ -231,6 +230,5 @@ jobs:
           CGO_ENABLED: 0
           INPUT_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # change here to your REGISTRY
-          REGISTRY: europe-central2-docker.pkg.dev/sdp-demo-388112/container-repository-terraform
-#          REGISTRY: europe-central2-docker.pkg.dev/sdp-demo-388112/container-repository
+          REGISTRY: europe-central2-docker.pkg.dev/sdp-demo-388112/container-repository
 

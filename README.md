@@ -30,8 +30,9 @@ pulumi stack init [your-org]/dev
 
 #### Set pulumi configs for current stack
 ```
-pulumi config set gcp:project [your-gcp-project-id]
+pulumi config set gcp:project <GCP_PROJECT_ID>
 pulumi config set gcp:region europe-central2
+pulumi config set --path repos[0] <GITHUB_ORG/REPO_NAME>
 ```
 
 #### Run pulumi locally to deploy the infrastructure

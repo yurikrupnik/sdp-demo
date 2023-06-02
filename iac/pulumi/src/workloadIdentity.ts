@@ -46,7 +46,7 @@ export class WorkloadIdentityResource extends pulumi.ComponentResource {
       {
         description: 'Github Pool',
         displayName: 'Github pool',
-        workloadIdentityPoolId: 'github-pool-pul', // change pu to "te" - as in terraform,
+        workloadIdentityPoolId: 'github-pool-1', // change pu to "te" - as in terraform,
         // if u create it and delete it - u must change the name here - can not really delete the resource.
         project,
       },
