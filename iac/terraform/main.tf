@@ -32,7 +32,7 @@ module "workloadidentity" {
   location                                      = var.location
   display_name                                  = "Github Pool"
   provider_display_name                         = "Github provider"
-  workload_identity_pool_id                     = "github-pool-terraform"
+  workload_identity_pool_id                     = "github-pool-terraform3"
   workload_identity_pool_description            = "Github Pool Terraform"
   workload_identity_pool_provider_id            = "github-provider-terraform"
   workload_identity_pool__provider_description  = "OIDC identity pool provider for Github"

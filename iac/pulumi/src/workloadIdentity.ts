@@ -20,13 +20,13 @@ export class WorkloadIdentityResource extends pulumi.ComponentResource {
     const { repos, project } = workloadIdentityResourceProps;
 
     const sa = new gcp.serviceaccount.Account(
-      'container-builder-sa',
+      'container-writer',
       {
         project,
-        accountId: 'container-builder-sa',
+        accountId: 'container-writer',
         disabled: false,
         description: 'Github actions service account to create containers',
-        displayName: 'Container builder',
+        displayName: 'Container writer',
       },
       { parent: this, ...opts }
     );
@@ -46,7 +46,7 @@ export class WorkloadIdentityResource extends pulumi.ComponentResource {
       {
         description: 'Github Pool',
         displayName: 'Github pool',
-        workloadIdentityPoolId: 'github-pool-1', // change pu to "te" - as in terraform,
+        workloadIdentityPoolId: 'github-pool-2', // change pu to "te" - as in terraform,
         // if u create it and delete it - u must change the name here - can not really delete the resource.
         project,
       },
