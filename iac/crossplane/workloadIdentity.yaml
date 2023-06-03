@@ -82,7 +82,7 @@ metadata:
     upjet.upbound.io/manual-ntervention: Needs permissions for Pool creation
   labels:
     testing.upbound.io/example-name: github-pool
-  name: github-pool-cr2
+  name: github-pool-cr3
 spec:
   forProvider:
     description: 'Github Pool Crossplane'
@@ -107,7 +107,7 @@ spec:
       'attribute.repository': 'assertion.repository'
     oidc:
      - issuerUri: 'https://token.actions.githubusercontent.com'
-    workloadIdentityPoolId: github-pool-cr2
+    workloadIdentityPoolId: github-pool-cr3
 ---
 apiVersion: cloudplatform.gcp.upbound.io/v1beta1
 kind: ServiceAccountIAMMember
@@ -119,7 +119,7 @@ metadata:
   name: service-account-iam-member1
 spec:
   forProvider:
-    member: 'principalSet://iam.googleapis.com/projects/260334471419/locations/global/workloadIdentityPools/github-pool-cr2/attribute.repository/yurikrupnik/sdp-demo'
+    member: 'principalSet://iam.googleapis.com/projects/260334471419/locations/global/workloadIdentityPools/github-pool-cr3/attribute.repository/yurikrupnik/sdp-demo'
     role: roles/iam.workloadIdentityUser
     serviceAccountIdSelector:
       matchLabels:
