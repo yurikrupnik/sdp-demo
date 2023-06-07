@@ -1,5 +1,5 @@
 config:
-  gcp:project: sdp-demo-388112
+  gcp:project: roee-cohen-sandbox
   gcp:region: europe-central2
   pulumi:repos:
-    - yurikrupnik/sdp-demo
+    - roeec84/sdp-demo
