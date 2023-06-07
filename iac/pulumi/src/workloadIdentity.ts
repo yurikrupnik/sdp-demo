@@ -42,11 +42,11 @@ export class WorkloadIdentityResource extends pulumi.ComponentResource {
     );
 
     const pool = new gcp.iam.WorkloadIdentityPool(
-      'example-pool-pulumi',
+      'example-pool-pulumi2',
       {
         description: 'Github Pool',
         displayName: 'Github pool',
-        workloadIdentityPoolId: 'github-pool-2', // change pu to "te" - as in terraform,
+        workloadIdentityPoolId: 'github-pool', // change pu to "te" - as in terraform,
         // if u create it and delete it - u must change the name here - can not really delete the resource.
         project,
       },
