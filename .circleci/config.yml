@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run: npm i
-#      - nx/set-shas
+      - nx/set-shas
 #      - run: npx nx format:check
       - run: npm nx affected -t lint --parallel=3
 #      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t test --parallel=3 --configuration=ci
