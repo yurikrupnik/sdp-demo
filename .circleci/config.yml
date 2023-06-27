@@ -10,7 +10,7 @@ jobs:
       - run: npm i
       - nx/set-shas
 #      - run: npx nx format:check
-      - run: npm nx affected --target=build --parallel --max-parallel=3 --prod
+#      - run: npm nx affected --target=build --parallel --max-parallel=3 --prod
 #      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t test --parallel=3 --configuration=ci
 #      - run: npx nx affected --base=$NX_BASE --head=$NX_HEAD -t build --parallel=3
 workflows:
