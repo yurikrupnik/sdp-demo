@@ -6,7 +6,7 @@
   "private": true,
   "devDependencies": {
     "@nx-go/nx-go": "^2.7.0",
-    "@nx-tools/container-metadata": "^4.0.3",
+    "@nx-tools/container-metadata": "^5.0.0",
     "@nx-tools/nx-container": "^4.0.3",
     "@nx/esbuild": "16.2.2",
     "@nx/eslint-plugin": "16.2.2",
