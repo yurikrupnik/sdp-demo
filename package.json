@@ -20,7 +20,7 @@
     "@types/node": "~18.7.1",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
-    "@wanews/nx-pulumi": "^0.26.0",
+    "@wanews/nx-pulumi": "^0.27.0",
     "esbuild": "^0.17.17",
     "eslint": "~8.43.0",
     "eslint-config-prettier": "8.1.0",

@@ -65,8 +65,8 @@ devDependencies:
     specifier: ^5.58.0
     version: 5.58.0(eslint@8.43.0)(typescript@5.0.4)
   '@wanews/nx-pulumi':
-    specifier: ^0.26.0
-    version: 0.26.0(@nrwl/devkit@15.9.4)
+    specifier: ^0.27.0
+    version: 0.27.0(@nrwl/devkit@15.9.4)
   esbuild:
     specifier: ^0.17.17
     version: 0.17.17
@@ -87,7 +87,7 @@ devDependencies:
     version: 16.2.2
   nx-cloud:
     specifier: latest
-    version: 16.0.5
+    version: 16.4.0
   prettier:
     specifier: ^2.6.2
     version: 2.6.2
@@ -2173,10 +2173,10 @@ packages:
       - typescript
     dev: true
 
-  /@nrwl/nx-cloud@16.0.5:
-    resolution: {integrity: sha512-1p82ym8WE9ziejwgPslstn19iV/VkHfHfKr/5YOnfCHQS+NxUf92ogcYhHXtqWLblVZ9Zs4W4pkSXK4e04wCmQ==}
+  /@nrwl/nx-cloud@16.4.0:
+    resolution: {integrity: sha512-QitrYK6z9ceagetBlgLMZnC0T85k2JTk+oK0MxZ5p/woclqeYN7SiGNZgMzDq8TjJwt8Fm/MDnsSo3xtufmLBg==}
     dependencies:
-      nx-cloud: 16.0.5
+      nx-cloud: 16.4.0
     transitivePeerDependencies:
       - debug
     dev: true
@@ -3298,8 +3298,8 @@ packages:
       eslint-visitor-keys: 3.4.1
     dev: true
 
-  /@wanews/nx-pulumi@0.26.0(@nrwl/devkit@15.9.4):
-    resolution: {integrity: sha512-pue5aM5ghV15OaiPb5XnY3KSXWMYjF4VWfOsrmNPsEWGe0o6D8ISl051kHmMcOPkNaZFRxN+Y4zn+vzULSTuYA==}
+  /@wanews/nx-pulumi@0.27.0(@nrwl/devkit@15.9.4):
+    resolution: {integrity: sha512-poHOtDS8wX7HiSbTtFxhd90mHb+KLKOV9GVWdvTpyrldukRSZdXYTPVbdtmJoafG8H8qDfYQ+yKzFB5A/FWJtw==}
     peerDependencies:
       '@nrwl/devkit': '>14.5.0'
     dependencies:
@@ -5902,11 +5902,11 @@ packages:
     dependencies:
       path-key: 3.1.1
 
-  /nx-cloud@16.0.5:
-    resolution: {integrity: sha512-13P7r0aKikjBtmdZrNorwXzVPeVIV4MLEwqGY+DEG6doLBtI5KqEQk/d5B5l2dCF2BEi/LXEmLYCmf9gwbOJ+Q==}
+  /nx-cloud@16.4.0:
+    resolution: {integrity: sha512-jbq4hWvDwRlJVpxgMgbmNSkue+6XZSn53R6Vo6qmCAWODJ9KY1BZdZ/9VRL8IX/BRKebVFiXp3SapFB1qPhH8A==}
     hasBin: true
     dependencies:
-      '@nrwl/nx-cloud': 16.0.5
+      '@nrwl/nx-cloud': 16.4.0
       axios: 1.1.3
       chalk: 4.1.2
       dotenv: 10.0.0
